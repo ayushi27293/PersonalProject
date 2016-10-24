@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 var cookieParser = require('cookie-parser');
 app.use(cookieParser);
 var session = require('express-session');
-app.use(session({secret: "XDvNCAughBqEH3UZ",
+app.use(session({secret: "3hnYcl2LDVQ6VT8f",
     resave: "",
     saveUninitialized: ""}));
 //Root page
@@ -33,10 +33,10 @@ app.get('/linkedin_login', function(req, res) {
     var getRequestTokenUrl = "https://api.linkedin.com/uas/oauth/requestToken?scope=r_network";
     var oa = new OAuth(getRequestTokenUrl,
         "https://api.linkedin.com/uas/oauth/accessToken",
-        "<<API KEY>>",
-        "<<SECRET KEY>>",
+        "<<81e57bl2ssjlec>>",
+        "<<3hnYcl2LDVQ6VT8f>>",
         "1.0",
-        "http://localhost:3000/linkedin_callback"+( req.param('action') && req.param('action') != "" ? "?action="+querystring.escape(req.param('action')) : "" ), // the callback url where LinkedIn OAuth secret token will be sent
+        "https://ayushiaouth.herokuapp.com/linkedin_callback"+( req.param('action') && req.param('action') != "" ? "?action="+querystring.escape(req.param('action')) : "" ), // the callback url where LinkedIn OAuth secret token will be sent
 
         "HMAC-SHA1");
 
@@ -113,4 +113,4 @@ app.get('/linkedin_track', function(req, res) {
         });
 });
 app.listen(3000);
-console.log("listening on http://localhost:");
+console.log("listening on https://ayushiaouth.herokuapp.com/");
